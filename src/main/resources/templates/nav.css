@@ -1,0 +1,9 @@
+.row {
+	display: flex;
+	justify-content: space-between;
+	background: tomato;
+}
+
+body {
+	margin: 0;
+}
