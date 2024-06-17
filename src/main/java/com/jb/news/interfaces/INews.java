@@ -12,7 +12,7 @@ import com.jb.news.model.News;
 @Repository
 public interface INews extends CrudRepository<News, Integer> {
 	
-	@Query("SELECT n FROM News n WHERE n.title LIKE :title||'%'")
+	@Query("SELECT n FROM News n WHERE n.title LIKE :title")
 	public List<News> findByTitle(@Param("title") String title);
 
 }
