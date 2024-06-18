@@ -12,19 +12,19 @@
 													style="width:80%; margin-left:180px;">
 		<div class="container-fluid">
 			<div  class="col-3">
-				<a th:href="@{/add}" class="navbar-brand btn btn-secondary">Add News</a>
+				<a th:href="@{/add}" class="navbar-brand btn btn-dark">Add News</a>
 			</div>
 			<div  class="col-3">
-				<a th:href="@{/list}" class="navbar-brand btn btn-primary">All News</a>
+				<a th:href="@{/list}" class="navbar-brand btn btn-dark">All News</a>
 			</div>
 			<div  class="col-3">
 				<div class="dropdown">
-				  <button class="navbar-brand btn btn-secondary dropdown-toggle" type="button" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+				  <button class="navbar-brand btn btn-dark dropdown-toggle" type="button" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
 				    <output th:text="${msgUser}"></output>
 				  </button>
 				  <ul class="dropdown-menu" aria-labelledby="dropdownUser">
 				    <li><a class="dropdown-item" th:href="@{/chgpwd}">Change Password</a></li>
-				    <li><a class="dropdown-item" th:href="@{/news}">Sign out</a></li>
+					<li><a class="dropdown-item" th:href="@{/news}"><i class="bi bi-box-arrow-right"></i></a></li>
 				  </ul>
 				</div>
 			</div>		
