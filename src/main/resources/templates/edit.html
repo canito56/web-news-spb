@@ -12,20 +12,24 @@
 		<div class="card bg-secondary">
 			<div class="card-header mb-2">
 				<table>
-					<th><h3>Edit News</h3></th>
-					<th><a th:href="@{/list}" class="btn btn-primary ms-5">All News</a></th>
+					<thead>
+						<tr>
+							<th><h3>Edit News</h3></th>
+							<th><a th:href="@{/list}" class="btn btn-primary ms-5">All News</a></th>
+						</tr>
+					</thead>
 				</table>
 			</div>
 			<div class="card-body">
 				<div class="form-group mb-3">
-					<input th:field="*{id_news}" type="hidden" class="form-control"/>
+					<input th:field="*{idNews}" type="hidden" class="form-control"/>
 				</div>
 				<div class="form-group mb-3">
-					<label>TITLE</label>
+					<label for="english">TITLE</label>
 					<input th:field="*{title}" type="text" class="form-control" readonly/>
 				</div>
 				<div class="form-group mb-3">
-					<label>NEWS</label>
+					<label for="english">NEWS</label>
 					<input th:field="*{snews}" type="text" class="form-control" autofocus required/>
 				</div>
 			</div>

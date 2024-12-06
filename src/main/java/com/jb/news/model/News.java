@@ -19,7 +19,8 @@ public @Data class News {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_news;
+	@Column(name="id_news")
+	private int idNews;
 	
 	@Column(name="title")
 	private String title;
@@ -29,6 +30,6 @@ public @Data class News {
 	
 	@UpdateTimestamp
 	@Column(name="date_created")
-	private Timestamp date_created;
+	private Timestamp dateCreated;
 		
 }

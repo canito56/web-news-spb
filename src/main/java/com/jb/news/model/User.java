@@ -19,7 +19,8 @@ public @Data class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_user;	
+	@Column(name="id_user")
+	private int idUser;	
 	
 	@Column(name="suser")
 	private String suser;
@@ -28,16 +29,16 @@ public @Data class User {
 	private String password;
 	
 	@Column(name="first_name") 
-	private String first_name;
+	private String firstName;
 	
 	@Column(name="last_name") 
-	private String last_name;
+	private String lastName;
 	
 	@Column(name="email")
 	private String email;
 	
 	@UpdateTimestamp
 	@Column(name="date_created")
-	private Timestamp date_created;
+	private Timestamp dateCreated;
 
 }

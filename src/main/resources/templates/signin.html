@@ -13,17 +13,21 @@
 			<div class="card bg-secondary">
 				<div class="card-header mb-2">
 					<table class="table">
-						<th><h3>SIGNIN</h3></th>
-						<th><a th:href="@{/signup}" class="btn btn-primary">SignUp</a></th>
+						<thead>
+							<tr>
+								<th><h3>SIGNIN</h3></th>
+								<th><a th:href="@{/signup}" class="btn btn-primary">SignUp</a></th>
+							</tr>
+						</thead>
 					</table>
 				</div>
 				<div class="card-body">
 					<div class="form-group mb-3">
-						<label>User</label>
+						<label for="english">User</label>
 						<input th:field="*{suser}" type="text" class="form-control" autofocus>
 					</div>
 					<div class="form-group mb-3">
-						<label>Password</label>
+						<label for="english">Password</label>
 						<input th:field="*{password}" type="password" class="form-control" required>
 					</div>
 				</div>	

@@ -5,42 +5,29 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jb.news.interfaceService.IUserService;
 import com.jb.news.interfaces.IUser;
+import com.jb.news.interfaceservice.IUserService;
 import com.jb.news.model.User;
 
 @Service
 public class UserService implements IUserService {
-	@Autowired
+	
 	private IUser data;
+	
 	private static String salt = "vamos river todavia CARAJO boquita puto!";
+	
+	public UserService(IUser data) {
+		this.data = data;
+	}
 
-	@Override
 	public Optional<User> getUser(String u) {
 		return data.findBySuser(u);
 	}
 
-	@Override
-	public int addUser(User u) {
-		int res = 0;
-		u.setPassword(getSecurePassword(u.getPassword()));
-		User user = data.save(u);
-		if (!user.equals(null)) {
-			res = 1;
-		}
-		return res;
-	}
-
-	@Override
-	public int updateUser(User u) {
-		int res = 1; 
-		if (data.save(u).equals(null)) {
-			res = 0;
-		}
-		return res;
+	public void updateUser(User u) {
+		data.save(u);
 	}
 	
 	public String getSecurePassword(String passwordToHash) {		

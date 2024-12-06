@@ -3,7 +3,6 @@ package com.jb.news.controller;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.jb.news.interfaceService.INewsService;
-import com.jb.news.interfaceService.IUserService;
+import com.jb.news.interfaceservice.INewsService;
+import com.jb.news.interfaceservice.IUserService;
 import com.jb.news.model.News;
 import com.jb.news.model.User;
 
@@ -21,12 +20,12 @@ import com.jb.news.model.User;
 @RequestMapping
 public class NewsController {
 	
-	@Autowired
 	private INewsService serviceNews;
-	@Autowired
 	private IUserService serviceUser;
+
 	private String message;
 	private String msgUser;
+
 	private static final String attMessage     = "message";
 	private static final String attMsgUser     = "msgUser";
 	private static final String redirectNews   = "redirect:/news";
@@ -34,6 +33,11 @@ public class NewsController {
 	private static final String redirectChgpwd = "redirect:/chgpwd";
 	private static final String redirectSignup = "redirect:/signup";
 	private static final String redirectAdd    = "redirect:/add";
+
+	public NewsController(INewsService serviceNews, IUserService serviceUser) {
+		this.serviceNews = serviceNews;
+		this.serviceUser = serviceUser;
+	}
 	
 	@GetMapping("/news")
 	public String signin(Model model) { 
@@ -75,13 +79,10 @@ public class NewsController {
 			message = "User already exists";
 			return redirectSignup;
 		}
-		if (serviceUser.addUser(u) == 1) {
-			message = "User registered, enter with new user";
-			return redirectNews;
-		} else {
-			message = "User not registered";
-			return redirectSignup;
-		}
+		u.setPassword(serviceUser.getSecurePassword(u.getPassword()));
+		serviceUser.updateUser(u);
+		message = "User registered, enter with new user";
+		return redirectNews;
 	}
 	
 	@GetMapping("/chgpwd")
@@ -105,13 +106,9 @@ public class NewsController {
 				if (!pwdold.equals(serviceUser.getSecurePassword(pwdnew1))) {
 					if (pwdnew1.equals(pwdnew2)) {
 						us.get().setPassword(serviceUser.getSecurePassword(pwdnew1));
-						if (serviceUser.updateUser(us.get()) == 1) {
-							message = "Signin with your new password";
-							return redirectNews;						
-						} else {
-							message = "Save password failed!, contact with IT admin";
-							return redirectChgpwd;						
-						}
+						serviceUser.updateUser(us.get()); 
+						message = "Signin with your new password";
+						return redirectNews;						
 					} else {
 						message = "New passwords are diferent";
 						return redirectChgpwd;
@@ -164,11 +161,8 @@ public class NewsController {
 			message = "News already exists!";
 			return redirectAdd;
 		} else {
-			if (serviceNews.addNews(n) == 1) {
-				return redirectList;
-			}
-			message = "Save News fail!, contact with IT admin";
-			return redirectAdd;			
+			serviceNews.updateNews(n);
+			return redirectList;
 		}
 	}
 	

@@ -13,29 +13,33 @@
 			<div class="card bg-secondary">	
 				<div class="card-header mb-2">
 					<table class="table">
-						<th><h3>SIGNUP</h3></th>
-						<th><a th:href="@{/news}" class="btn btn-primary">SignIn</a></th>
+						<thead>
+							<tr>
+								<th><h3>SIGNUP</h3></th>
+								<th><a th:href="@{/news}" class="btn btn-primary">SignIn</a></th>
+							</tr>
+						</thead>
 					</table>
 				</div>
 				<div class="card-body">	
 					<div class="form-group mb-3">
-						<label>First Name</label>
-						<input th:field="*{first_name}" type="text" class="form-control" required autofocus>
+						<label for="english">First Name</label>
+						<input th:field="*{firstName}" type="text" class="form-control" required autofocus>
 					</div>
 					<div class="form-group mb-3">
-						<label>Last Name</label>
-						<input th:field="*{last_name}" type="text" class="form-control" required>
+						<label for="english">Last Name</label>
+						<input th:field="*{lastName}" type="text" class="form-control" required>
 					</div>
 					<div class="form-group mb-3">
-						<label>eMail</label>
+						<label for="english">eMail</label>
 						<input th:field="*{email}" type="email" class="form-control" required>
 					</div>
 					<div class="form-group mb-3">
-						<label>User</label>
+						<label for="english">User</label>
 						<input th:field="*{suser}" type="text" class="form-control" required autofocus>
 					</div>
 					<div class="form-group mb-3">
-						<label>Password</label>
+						<label for="english">Password</label>
 						<input th:field="*{password}" type="password" class="form-control" required>
 					</div>
 				</div>	

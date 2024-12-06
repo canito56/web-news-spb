@@ -28,10 +28,10 @@
 			<tr th:each="lnews:${lnews}">
 				<td th:text="${lnews.title}" style="width: 20%"></td>
 				<td th:text="${lnews.snews}" style="width: 57%"></td>
-				<td th:text="${#dates.format(lnews.date_created, 'yyyy-MM-dd HH:mm')}" style="width: 15%"></td>
+				<td th:text="${#dates.format(lnews.dateCreated, 'yyyy-MM-dd HH:mm')}" style="width: 15%"></td>
 				<td>
-					<a th:href="@{/edit/}+${lnews.id_news}" class="btn btn-warning"><i class="bi bi-pencil"></i></a>
- 					<a th:href="@{/delete/}+${lnews.id_news}" class="btn btn-danger"><i class="bi bi-trash3"></i></a> 
+					<a th:href="@{/edit/}+${lnews.idNews}" class="btn btn-warning"><i class="bi bi-pencil"></i></a>
+ 					<a th:href="@{/delete/}+${lnews.idNews}" class="btn btn-danger"><i class="bi bi-trash3"></i></a> 
 				</td>
 			</tr>
 		</tbody>
